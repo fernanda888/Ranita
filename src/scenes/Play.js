@@ -96,6 +96,20 @@ class Play extends Phaser.Scene {
             this.p1frog.reset();
             this.flyExplode(this.fly01);
         }
+        let timeConfig = {
+            fontFamily: 'Papyrus',
+            fontSize: '28px',
+            backgroundColor: '#c9b7ff',
+            color: '#000000',
+            align: 'right',
+            padding:{
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.timeLeft= this.add.text(borderUISize-borderPadding,borderUISize-borderPadding*2,
+            this.clock.getRemainingSeconds().toString().substr(0, 2), timeConfig );
     }
     checkCollision(frog, fly) {
         //Axis-Aligned Bounding Boxes (AABB) checking
