@@ -10,14 +10,14 @@ class Play extends Phaser.Scene {
         this.load.image('background', './assets/background.png');
         // load spritesheet
         this.load.spritesheet('eating', './assets/eating.png', 
-        {frameWidth: 68, frameHeight: 34, startFrame: 0, endFrame: 9});
+        {frameWidth: 66, frameHeight: 33, startFrame: 0, endFrame: 10});
     }
 
     create() {
         //place tile sprite
         this.background = this.add.tileSprite(0,0,640,480, 'background').setOrigin(0,0);
         // green UI background
-        //this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
+        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xFFFFFF).setOrigin(0, 0);
         // white borders
         // this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
         // this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
@@ -36,7 +36,7 @@ class Play extends Phaser.Scene {
         // animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('eating', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('eating', { start: 0, end: 10, first: 0}),
             frameRate: 30
         });
         // initialize score
@@ -47,7 +47,7 @@ class Play extends Phaser.Scene {
             fontSize: '28px',
             backgroundColor: '#c9b7ff',
             color: '#000000',
-            align: 'right',
+            align: 'center',
             padding:{
                 top: 5,
                 bottom: 5,
@@ -101,14 +101,14 @@ class Play extends Phaser.Scene {
             fontSize: '28px',
             backgroundColor: '#c9b7ff',
             color: '#000000',
-            align: 'right',
+            align: 'center',
             padding:{
                 top: 5,
                 bottom: 5,
             },
             fixedWidth: 100
         }
-        this.timeLeft= this.add.text(borderUISize-borderPadding,borderUISize-borderPadding*2,
+        this.timeLeft= this.add.text(borderUISize+borderPadding*42, borderUISize+borderPadding*2,
             this.clock.getRemainingSeconds().toString().substr(0, 2), timeConfig );
     }
     checkCollision(frog, fly) {

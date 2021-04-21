@@ -8,6 +8,7 @@ class frog extends Phaser.GameObjects.Sprite{
         this.moveSpeed=2; //pixels per frame
         this.sfxfrog = scene.sound.add('sfx_frog'); // add frog sfx
     }
+    
 
     update(){
         //left and right movement

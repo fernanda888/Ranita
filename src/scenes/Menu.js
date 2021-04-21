@@ -8,26 +8,30 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/select.wav');
         this.load.audio('sfx_eating', './assets/collision.wav');
         this.load.audio('sfx_frog', './assets/frog.wav');
+        //load background
+        this.load.image('menuBackground', './assets/menuBackground.png');
     }
 
     create() {
-      this.cameras.main.setBackgroundColor('#b6e2f6');
+      this.background = this.add.tileSprite(0,0,640,480, 'menuBackground').setOrigin(0,0);
         let menuConfig = {
             fontFamily: 'Monaco',
-            fontSize: '28px',
-            backgroundColor: '#dcd0ff',
+            fontSize: '50px',
+            backgroundColor: '#00da6e',
             color: '#000000',
-            align: 'center',
+            align: 'right',
             padding:{
-                top: 1,
-                bottom: 1,
+                top: 5,
+                bottom: 5,
             },
             fixedWidth: 0
         }
         //menu text
-        this.add.text(game.config.width/2, game.config.height/2- borderUISize- borderPadding, 'RANITA', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2- borderUISize- borderPadding*5, 'RANITA', menuConfig).setOrigin(0.5);
+        menuConfig.fontSize='28px';
+        menuConfig.backgroundColor='#a791c2';
         this.add.text(game.config.width/2, game.config.height/2, 'Use <- -> arrows to move & (F) to jump', menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor='#0fe87c';
+        menuConfig.backgroundColor='#ffc0cb';
         menuConfig.color='#000';
         this.add.text(game.config.width/2, game.config.height/2+ borderUISize+ borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5);
         //define keys
