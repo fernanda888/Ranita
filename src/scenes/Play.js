@@ -65,10 +65,19 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver=true;
         }, null, this);
-        this.input.on('pointermove', function (pointer)
-    {
-        this.p1frog.setPosition(pointer.x,0);
-    }, this);
+        this.input.on('pointermove', function (pointer){
+            if(!this.p1frog.isFiring){
+                this.p1frog.setPosition(pointer.x,0);
+            }
+        }, this);
+
+        this.input.on('pointerdown', function (pointer) {
+            console.log('fire');
+            if(!this.p1frog.isFiring){
+                this.p1frog.isFiring= true;
+                this.p1frog.sfxfrog.play();  // play sfx
+            }
+        }, this);
     }
 
     update(){

@@ -27,6 +27,7 @@ class frog extends Phaser.GameObjects.Sprite{
             this.isFiring= true;
             this.sfxfrog.play();  // play sfx
         }
+    
 
         //if fired, move up
         if(this.isFiring && this.y >= borderUISize*3 + borderPadding){
